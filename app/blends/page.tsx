@@ -1,17 +1,19 @@
-import { fetchBlends, fetchSpices } from "@/data/api"
+import type { Metadata } from 'next'
+import Title from "@/components/Title"
+import DataItems from "@/components/DataItems"
 
-const Spices = async () => {
-  const spices = await fetchSpices()
-  const blends = await fetchBlends()
-  console.log("render")
+export const metadata: Metadata = {
+  title: `Blends | ${process.env.siteTitle}`,
+  description: "This list of blends will help you with all of your cooking needs and have a variety of spices for seasoning.",
+}
+
+const Blends = () => {
   return (
-    <div className="p-24">
-      <div>Blend List</div>
-      {blends.map(blend => <div key={blend.name}>{blend.name}</div>)}
-      <div>Related Spices</div>
-      {spices.map(spice => <div key={spice.name}>{spice.name}</div>)}
-    </div>
+    <>
+      <Title titleType="pageTitle">Blends</Title>
+      <DataItems primaryData="blends" secondaryData="spices" />
+    </>
   )
 }
 
-export default Spices
+export default Blends

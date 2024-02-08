@@ -1,17 +1,18 @@
-import { fetchBlends, fetchSpices } from "@/data/api"
-import Link from "@/node_modules/next/link"
+import type { Metadata } from 'next'
+import Title from "@/components/Title"
+import DataItems from "@/components/DataItems"
 
-const Spices = async () => {
-  const spices = await fetchSpices()
-  const blends = await fetchBlends()
-  console.log("render")
+export const metadata: Metadata = {
+  title: `Spices | ${process.env.siteTitle}`,
+  description: "This list of spices will help you with all of your cooking needs and can be easily filtered by price, heat, and name.",
+}
+
+const Spices = () => {
   return (
-    <div className="p-24">
-      <div>Spice List</div>
-      {spices.map(spice => <div key={spice.name}><Link href={`/spice/${spice.name}`}>{spice.name}</Link></div>)}
-      <div>Related Blends</div>
-      {blends.map(blend => <div key={blend.name}>{blend.name}</div>)}
-    </div>
+    <>
+      <Title titleType="pageTitle">Spices</Title>
+      <DataItems primaryData="spices" secondaryData="blends" />
+    </>
   )
 }
 
