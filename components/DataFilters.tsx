@@ -18,7 +18,7 @@ const DataFilters = ({
   }
 
   const handleHeatSelectChange: React.ChangeEventHandler<HTMLSelectElement> = (e) => {
-    const heatNumber = e.target.value === "0" ? 0 : parseInt(e.target.value)
+    const heatNumber = parseInt(e.target.value)
     setHeat(heatNumber)
   }
 
