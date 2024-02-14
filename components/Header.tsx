@@ -11,19 +11,9 @@ const Header = ({ title }: { title: string | undefined }) => {
 
   return (
     <header className="px-12 py-8">
-      {isHome ?
-        <Title
-          titleType="siteTitleHome"
-        >
-          <Link href="/">{title}</Link>
-        </Title>
-      :
-        <Title
-          titleType="siteTitlePage"
-        >
-          <Link href="/">{title}</Link>
-        </Title>
-      }
+      <Title titleType={isHome ? "siteTitleHome" : "siteTitlePage"}>
+        <Link href="/">{title}</Link>
+      </Title>
       <nav>
         <ul className="flex gap-4">
           <li>
